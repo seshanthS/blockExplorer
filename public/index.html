@@ -3,11 +3,55 @@
 <head>
   <title>Express</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src = "/javascripts/loadData.js"></script>
 </head>
 
 <body>
   <h1>Express</h1>
   <p>Welcome to Express</p>
+  <table id="table1">
+    <tr>
+      <th>Number</th>
+      <th>blockHeight</th>
+      <th>blockHash</th>
+      <th>difficulty</th>
+      <th>blockSize</th>
+      <th>timeStamp</th>
+    </tr>
+    </tr>
+  </table>
+  <div id = "newBlockTable1"></div>
+  <br><br>
+  <table id="txTable">
+    <tr>
+      <th>Number</th>
+      <th>Hash</th>
+      <th>From</th>
+      <th>Value</th>
+      <th>gas</th>
+    </tr>
+  </table>
+  <div id = "newBlockTable2"></div>
+  <script>
+    $(document).ready(()=>{
+      syncData();
+      /*sync data every 10 seconds. Since average block creation time is around 8 seconds,
+       syncData will update the table every 10 seconds.
+      */
+      setInterval(syncData,10000);
+
+      function syncData(){
+        display();
+        displayTxTable();
+      }
+    });
+
+   
+  </script>
 </body>
 
 </html>
